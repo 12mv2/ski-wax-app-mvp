@@ -1,0 +1,33 @@
+{
+  "name": "ski-wax-app-mvp",
+  "description": "app using weather api data to recommend ski wax in response to user input of location and date + time of ski",
+  "version": "1.0.0",
+  "proxy": "http://localhost:5000",
+  "main": "src/",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js",
+    "client": "cd client && npm start",
+    "dev-full": "concurrently \"npm run dev\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monatheoctocat/my_package.git"
+  },
+  "keywords": [],
+  "author": "Colin Rooney",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/monatheoctocat/my_package/issues"
+  },
+  "homepage": "https://github.com/monatheoctocat/my_package",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.4"
+  }
+}
