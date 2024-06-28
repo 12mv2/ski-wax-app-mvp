@@ -1,18 +1,13 @@
-// webpack configured 
-// Import necessary Node.js modules and Webpack plugins
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
-// Export a function that returns the Webpack configuration
-// This function takes environment variables and CLI arguments
 module.exports = (env, argv) => {
-  // Determine if we're in production mode
+  // Determine if we're in production mode based on CLI arguments
   const isProduction = argv.mode === 'production';
 
-  // Return the Webpack configuration object
   return {
     // Specify the entry point of your application
     // This is where Webpack starts bundling
@@ -33,7 +28,7 @@ module.exports = (env, argv) => {
     devServer: {
       port: 3000, // Run the dev server on port 3000
       historyApiFallback: true, // Redirect 404s to index.html (useful for SPAs)
-      hot: true, // Enable Hot Module Replacement
+      hot: true, // Enable Hot Module Replacement for faster development
       proxy: {
         // Proxy API requests to your backend server
         '/api': 'http://localhost:5000'
@@ -47,7 +42,13 @@ module.exports = (env, argv) => {
         {
           test: /\.(js|jsx)$/, // Apply this rule to .js and .jsx files
           exclude: /node_modules/, // Don't process files in node_modules
-          use: ['babel-loader'] // Use Babel for transpilation
+          use: {
+            loader: 'babel-loader', // Use Babel for transpilation
+            options: {
+              // Use these Babel presets for transpilation
+              presets: ['@babel/preset-env', '@babel/preset-react']
+            }
+          }
         },
         // Process CSS files
         {
