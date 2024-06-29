@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 // export default function to define a function component in React, it creates a React component that can render UI elements, including a form with input fields for user data input
 
-export default function InputForm() {
+function InputForm() {
     const navigate = useNavigate();
 
     async function handleSubmit(e) {
@@ -48,5 +48,4 @@ export default function InputForm() {
     )
 }
 
-// export form to use in other components
-export default InputForm;
+export default InputForm; 

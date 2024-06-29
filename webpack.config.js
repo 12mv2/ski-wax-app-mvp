@@ -23,9 +23,11 @@ module.exports = (env, argv) => {
       port: 3000,
       historyApiFallback: true,
       hot: true,
-      proxy: {
-        '/api': 'http://localhost:5000'
-      }
+      proxy: [
+        {
+        '/api': 'http://localhost:5001'
+        }
+      ]
     },
 
     // Module rules for processing different file types
