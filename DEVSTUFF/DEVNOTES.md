@@ -40,3 +40,4 @@ npm install --save-dev nodemon
 --
 backend / express server running and connected to a react component in the front
 about to run webpack to get the front end react server running
+webpack ran! port 5000 changed to 5001 as it kept reconnecting even when i killed it

@@ -4,7 +4,7 @@
 const express = require('express')
 const app = express()
 const cors = require('cors'); // allows for cross origin requests
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 require('dotenv').config(); // so we cna use .env file
 
 //import api routes

@@ -1,22 +1,15 @@
-import React, { useState, useEffect } from 'react';
+// home page 
 
-function HomePage() {
-  const [message, setMessage] = useState('');
+import React from 'react';
 
-  useEffect(() => {
-    fetch('/api/hello')
-      .then(response => response.json())
-      .then(data => setMessage(data.message))
-      .catch(error => console.error('Error:', error));
-  }, []);
-
-  return (
-    <div className="HomePage">
-      <h1>{message} //from server/routes/api route//</h1>
-      <h2>Welcome to the home page! HomePage.jsx</h2>
-      {/* Other home page content */}
-    </div>
-  );
+function HomePage () {
+    return (
+        <div>
+            <h1>Welcome to Ski Wax App</h1>
+            {/* input form component */}
+        </div>
+    )
 }
 
+// export Home component
 export default HomePage;

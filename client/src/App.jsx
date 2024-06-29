@@ -1,23 +1,18 @@
-// fetch data from srver client/src/a
+// setup routes to render specific components based on the url
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; // import react router
+import HomePage from './HomePage'; // import Home component from components folder to render on home route
+import WaxRecommendation from './WaxRecommendation'; // import WaxRecommendation component from components folder to render on wax recommendation route
 
-import React, { useState, useEffect } from 'react';
-
+// App component that renders the home page and wax recommendation page based on the url
+// define routes that render specific components based on the url
 function App() {
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    fetch('/api/hello')
-      .then(response => response.json())
-      .then(data => setMessage(data.message))
-      .catch(error => console.error('Error:', error));
-  }, []);
-
   return (
-    <div className="App">
-      <h1>{message}</h1>
-      <h2>from App.jsx</h2>
-    </div>
+    <Router>
+      <switch>
+        <Route exact path="/" component={HonePage} /> 
+        <Route path="/wax-recommendation" component={WaxRecommendation} />
+      </switch>
+    </Router>
   );
 }
-
-export default App;
