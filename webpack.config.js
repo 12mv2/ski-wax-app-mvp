@@ -5,97 +5,84 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = (env, argv) => {
-  // Determine if we're in production mode based on CLI arguments
   const isProduction = argv.mode === 'production';
 
   return {
-    // Specify the entry point of your application
-    // This is where Webpack starts bundling
+    // Entry point: Where Webpack starts bundling
     entry: './client/src/index.js',
 
-    // Configure how and where Webpack should output bundled files
+    // Output: How and where to place bundled files
     output: {
-      // Set the output directory to 'dist' in the current directory
       path: path.resolve(__dirname, 'dist'),
-      // In production, use content hash for cache busting
-      // In development, use a simple name
       filename: isProduction ? '[name].[contenthash].js' : '[name].js',
-      // Set the base path for all assets in the app
       publicPath: '/'
     },
 
-    // Configure the development server
+    // Development server configuration
     devServer: {
-      port: 3000, // Run the dev server on port 3000
-      historyApiFallback: true, // Redirect 404s to index.html (useful for SPAs)
-      hot: true, // Enable Hot Module Replacement for faster development
+      port: 3000,
+      historyApiFallback: true,
+      hot: true,
       proxy: {
-        // Proxy API requests to your backend server
         '/api': 'http://localhost:5000'
       }
     },
 
-    // Set up rules for how different file types should be processed
+    // Module rules for processing different file types
     module: {
       rules: [
-        // Process JavaScript and JSX files
+        // JavaScript and JSX
         {
-          test: /\.(js|jsx)$/, // Apply this rule to .js and .jsx files
-          exclude: /node_modules/, // Don't process files in node_modules
+          test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
           use: {
-            loader: 'babel-loader', // Use Babel for transpilation
+            loader: 'babel-loader',
             options: {
-              // Use these Babel presets for transpilation
               presets: ['@babel/preset-env', '@babel/preset-react']
             }
           }
         },
-        // Process CSS files
+        // CSS
         {
-          test: /\.css$/, // Apply this rule to .css files
+          test: /\.css$/,
           use: [
-            // In production, extract CSS to files
-            // In development, inject CSS into the DOM
             isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-            'css-loader' // Process CSS imports
+            'css-loader'
           ]
         },
-        // Handle image files
+        // Images
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
-          type: 'asset/resource', // Automatically choose between inlining and copying files
+          type: 'asset/resource',
         }
       ]
     },
 
-    // Configure plugins
+    // Plugins for additional build steps
     plugins: [
-      new CleanWebpackPlugin(), // Clean the output directory before each build
+      new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-        template: './client/public/index.html' // Use this HTML file as a template
+        template: './client/public/index.html'
       }),
       new MiniCssExtractPlugin({
-        // In production, use content hash for cache busting
         filename: isProduction ? '[name].[contenthash].css' : '[name].css',
       }),
-      new Dotenv() // Load environment variables from a .env file
+      new Dotenv()
     ],
 
-    // Configure how modules are resolved
+    // Module resolution configuration
     resolve: {
-      extensions: ['.js', '.jsx'], // Allow importing these files without specifying extensions
-      modules: [path.resolve(__dirname, 'client/src'), 'node_modules'] // Where to look for modules
+      extensions: ['.js', '.jsx'],
+      modules: [path.resolve(__dirname, 'client/src'), 'node_modules']
     },
 
-    // Configure source map generation for debugging
-    // In production, generate separate source map files
-    // In development, inline source maps for faster builds
+    // Source map configuration for debugging
     devtool: isProduction ? 'source-map' : 'inline-source-map',
 
-    // Optimization settings
+    // Code splitting optimization
     optimization: {
       splitChunks: {
-        chunks: 'all', // Split code into smaller chunks for better loading performance
+        chunks: 'all',
       },
     },
   };
