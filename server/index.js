@@ -7,6 +7,8 @@ const cors = require('cors'); // allows for cross origin requests
 const PORT = process.env.PORT || 5001;
 require('dotenv').config(); // so we cna use .env file
 
+app.use(express.static('client/public')); // ensures express server can serve static files from the client/public directory
+ 
 //import api routes
 const apiRoutes  = require('./routes/api');
 
@@ -18,7 +20,7 @@ app.use('/api', apiRoutes);
 
 // to check if server is running and returns hello world to the browser
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Hello World! from the express backend server main server file and express application entry point')
 })
 
 // starts serveer and designates port 

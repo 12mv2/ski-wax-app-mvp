@@ -23,6 +23,9 @@ module.exports = (env, argv) => {
       port: 3000,
       historyApiFallback: true,
       hot: true,
+      static: {
+        directory: path.join(__dirname, 'client/public') // ensures access to static files in the public directory
+      },
       proxy: [
         {
         '/api': 'http://localhost:5001'
