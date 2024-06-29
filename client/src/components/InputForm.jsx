@@ -46,5 +46,7 @@ export default function InputForm() {
             <button type = 'submit'>Get wax recommendation</button>
         </form>
     )
-     
+}
 
+// export form to use in other components
+export default InputForm;

@@ -10,7 +10,7 @@ function App() {
   return (
     <Router>
       <switch>
-        <Route exact path="/" component={HonePage} /> 
+        <Route exact path="/" component={HomePage} /> 
         <Route path="/wax-recommendation" component={WaxRecommendation} />
       </switch>
     </Router>
