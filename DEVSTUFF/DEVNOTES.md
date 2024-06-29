@@ -38,3 +38,5 @@ npm init -y
 npm install express cors dotenv
 npm install --save-dev nodemon
 --
+backend / express server running and connected to a react component in the front
+about to run webpack to get the front end react server running
