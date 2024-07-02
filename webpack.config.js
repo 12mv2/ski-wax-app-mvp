@@ -28,7 +28,9 @@ module.exports = (env, argv) => {
       },
       proxy: [
         {
-        '/api': 'http://localhost:5001'
+          context: ['/api'],
+          target: 'http://localhost:5001',
+          logLevel: 'info'
         }
       ]
     },
