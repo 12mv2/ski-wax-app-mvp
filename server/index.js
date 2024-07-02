@@ -10,13 +10,14 @@ require('dotenv').config(); // so we cna use .env file
 app.use(express.static('client/public')); // ensures express server can serve static files from the client/public directory
  
 //import api routes
-const apiRoutes  = require('./routes/api');
+// const apiRoutes  = require('./routes/api/clothing');
+const waxApiRoutes = require('./routes/api/wax')
 
 app.use(cors());    // enable cors so that app can communicate with server and external api
 app.use(express.json()); // parses incoming requests with JSON payloads
 
 // use api routes in the app if the url starts with /api
-app.use('/api', apiRoutes);
+app.use('/api/wax', waxApiRoutes);
 
 // to check if server is running and returns hello world to the browser
 app.get('/', (req, res) => {

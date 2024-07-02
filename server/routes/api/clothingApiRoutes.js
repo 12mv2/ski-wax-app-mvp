@@ -7,6 +7,10 @@ router.get('/hello', (req, res) => {
   res.json({ message: 'Hello from the server!, server/routes/api' });
 });
 
-// Other routes...
+// POST request from InputForm.jsx 
+router.post('/wax-recommendations', (req, res, next) => {
+   
+});
+
 
 module.exports = router;
