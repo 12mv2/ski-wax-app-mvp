@@ -14,11 +14,12 @@ function InputForm() {
         const formData = new FormData(e.target); // read form data, create a new FormData object from the form element
         const location = formData.get('location'); // get the value of the location input field
         const date = formData.get('date'); // get the value of the date input field
+        const time = formData.get('time'); // get the time from the input field
         
         // navigate to the wax recommendation pade with the location and date as query parameters
 
         try {
-            const response = await fetch('/api/wax-recommendation', { 
+            const response = await fetch('/api/wax', { // make a POST request to the server with the location and date as the request body at the /api/waxApiRoutes endpoint
                 method: 'POST',
                 headers: {
                     contentType: 'application/json', // set content type header to application/json to send JSON data
@@ -40,9 +41,10 @@ function InputForm() {
     }
     // return a form element with input fields for location and date, and a submit button
     return (
-        <form onSubmit = {handleSubmit}> // call handleSubmit fundction when form is submitted
+        <form onSubmit = {handleSubmit}> // call handleSubmit when form is submitted
             <input name = 'location' type = 'text' placeholder = 'Location' required /> 
             <input name = 'date' type = 'date' required /> 
+            <input name = 'time' type = 'time' required />
             <button type = 'submit'>Get wax recommendation</button>
         </form>
     )
