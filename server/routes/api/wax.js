@@ -4,6 +4,7 @@ const express = require('express');
 // const fetch = require('node-fetch');
 const router = express.Router();
 
+const getCoordinates = require('../utils/location');
 
 router.get('/hello', (req, res) => {
   res.json({ message: 'Hello from the server!, server/routes/api' });
@@ -13,6 +14,9 @@ router.get('/hello', (req, res) => {
 router.post('/', async(req, res, next) => {
 
   const { location, date, time } = req.body;
+
+  // use getCoordinates helper 
+  const coordinates = await getCoordinates(location);
 
     try {
       // dynamically import node-fetch
