@@ -8,16 +8,17 @@ const getWaxes = require ('../services/getWaxesFromDb');
 async function getWaxRecommendation(req, res) {
     const { location, date, time } = req.body;
     try {
+
         console.log(`Fetching coordinates for ${location}`);
         const coordinates = await getCoordinates(location);
-        const { lat, lon } = coordinates;
-        console.log(`coordinates received-- lat: ${lat}, lon: ${lon}`);
+        const { lat, lng } = coordinates;
+        console.log(`coordinates received-- lat: ${lat}, lon: ${lng}`);
 
-        console.log(`Fetching temperature for--- lat: ${lat}, lon: ${lon}, date: ${date}, time: ${time}`);
-        const temperature = await getWeatherData(lon, lat, time);
-        console.log(`Temperature received- temp: ${temp}`);
+        console.log(`Fetching temperature for--- lat: ${lat}, lon: ${lng}, date: ${date}, time: ${time}`);
+        const temperature = await getWeatherData(lng, lat, time);
+        console.log(`Temperature received- temp: ${temperature}`);
 
-        console.log(`Fetching wax/es from db for- temp: ${temp}`);
+        console.log(`Fetching wax/es from db for- temp: ${temperature}`);
         const wax = await getWaxes(temperature);
         console.log(`Wax/es received: ${wax}`);
         
