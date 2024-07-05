@@ -145,3 +145,7 @@ By following these steps, you should clean up your repository, remove the large 
 ***********************
 npm run dev
 
+---
+data working thru the geoLocation service but breaking at the weather service
+Next steps are to debug why lon is not gettting to the weather service
+
