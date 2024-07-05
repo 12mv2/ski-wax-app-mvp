@@ -98,21 +98,48 @@ cd ski-wax-app-mvp.git
 Run BFG Repo-Cleaner:
 
 Use Java to run the BFG tool:
+Use BFG to clean large files:
+
+Ensure you're in the root directory of your repository. Run the BFG command to remove MP4 files from the history:
+
 sh
 Copy code
-java -jar /path/to/bfg.jar --delete-files '*.mp4'
-Clean the repository:
+java -jar bfg.jar --delete-files '*.mp4'
+After running BFG, clean the repository:
 
-Run Git commands to clean up the repository:
 sh
 Copy code
-git reflog expire --expire=now --all
-git gc --prune=now --aggressive
-Push the changes to GitHub:
+cd ski-wax-app-mvp.git
+git reflog expire --expire=now --all && git gc --prune=now --aggressive
+cd ..
+Force push the cleaned history:
 
-Force push the cleaned repository:
+sh
+Copy code
+git push --force --all
+git push --force --tags
+Remove the local node_modules and clean it up:
+
+Ensure you remove the node_modules folder completely and update the git index:
+
+sh
+Copy code
+rm -rf node_modules
+git rm -r --cached node_modules
+git commit -m "Remove node_modules from repository"
+Ensure no MP4 files are present locally and commit the changes:
+
+sh
+Copy code
+find . -name '*.mp4' -exec rm {} \;
+git add -u
+git commit -m "Remove MP4 files from repository"
+Force push these changes as well:
+
 sh
 Copy code
 git push --force
-By following these steps, you should be able to remove the large .mp4 files from your repository's history and push the cleaned repository to GitHub. If you encounter any issues, please let me know!
+By following these steps, you should clean up your repository, remove the large files from the history, and ensure they are not tracked in the future.
+
+--------
 
