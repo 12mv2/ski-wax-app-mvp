@@ -7,16 +7,18 @@ const API_KEY = 'd8ab23e9a5dcb795ca44d4cf563807cd';
 async function getWeatherData(lon, lat, hour) {
     try {
         const response = await axios.get(`https://api.openweathermap.org/data/3.0/onecall`, {
-            // paramaterization aka passing paramaters
-            params: { 
+            params: { // paramaterization aka passing paramaters
                     lat, 
                     lon, 
                     exclude: 'current,minutely,daily,alerts', 
-                    appid: API_KEY  
+                    appid: API_KEY, 
+                    units: 'imperial'
                     }
-    })  
+        })  
     
-        return response.data.hourly[hour].temp;
+        const temperature = response.data.hourly[hour].temp;
+        return temperature;
+
     } catch (error) {
         console.log('error fetching weather data: ', error.message);
         throw error;

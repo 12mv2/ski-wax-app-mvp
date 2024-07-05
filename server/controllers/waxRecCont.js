@@ -1,45 +1,34 @@
-// waxRecCont.js 
-// controller for middleware having to do with weather
-// It uses services / middleware and client input form data to first get coordinates based on location, then temperateure based on coordinates and hour, responds to a post request on the routes/api/weather route
-// handles errors with try catch and next
+// controllers/waxRecCont.js
+// uses services on form data to get wax recommendations 
 
-const getWeatherData = require('../services/weatherService.js') 
-const getCoordinates = require('../services/geoCodingService.js')
+const getCoordinates = require ('../services/geoCodingService');
+const getWeatherData = require ('../services/weatherService');
+const getWaxes = require ('../services/getWaxesFromDb');
 
-module.exports = { 
-    getWeatherForecast : async(req, res, next) => {
+async function getWaxRecommendation(req, res) {
+    const { location, date, time } = req.body;
     try {
-        // extract query parameters
-        const { location, date, time, hour } = req.query; 
-
-        // Get coordinates for given location
+        console.log(`Fetching coordinates for ${location}`);
         const coordinates = await getCoordinates(location);
+        const { lat, lon } = coordinates;
+        console.log(`coordinates received-- lat: ${lat}, lon: ${lon}`);
 
-        // Get temperature for given coordinates and hour
-        const temperature = await getWeatherData(coordinates, hour);     
+        console.log(`Fetching temperature for--- lat: ${lat}, lon: ${lon}, date: ${date}, time: ${time}`);
+        const temperature = await getWeatherData(lon, lat, time);
+        console.log(`Temperature received- temp: ${temp}`);
 
-        // prepare and send response
-        response = {
-            temperature: temperature,
-            coordinates: coordinates,
-            date: date,
-            time: time,
-            hour: hour
-        }
-        // save to locals then use next
-        res.json(response);
-
-    // handle errors and pass to error handling middleware
-    } catch (error) {
-        console.error('error in the weatherController controller: ', error);
-        next(error);
+        console.log(`Fetching wax/es from db for- temp: ${temp}`);
+        const wax = await getWaxes(temperature);
+        console.log(`Wax/es received: ${wax}`);
+        
+        res.json( { location, date, time, recommendation: wax})
+    }   catch (error) {
+        console.log('error fetching data from the waxRecCont controller', error);
+        res.status(500).json( { error: 'error fetching data from teh waxRecCont controller' } )
     }
-}
-}    
+};
 
-        
-
-        
+module.exports = { getWaxRecommendation } 
 
         
 
