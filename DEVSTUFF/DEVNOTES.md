@@ -142,4 +142,6 @@ git push --force
 By following these steps, you should clean up your repository, remove the large files from the history, and ensure they are not tracked in the future.
 
 --------
+***********************
+npm run dev
 

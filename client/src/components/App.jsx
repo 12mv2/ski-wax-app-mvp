@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // im
 import HomePage from './HomePage'; // import Home component from components folder to render on home route
 import WaxRecommendation from './WaxRecommendation'; // import WaxRecommendation component from components folder to render on wax recommendation route
 import InputForm from './InputForm'; // import InputForm component from components folder to render on input route
+import AppNavbar from '/Navbar';
 
 // App component that renders the home page and wax recommendation page based on the url
 // define routes that render specific components based on the url
