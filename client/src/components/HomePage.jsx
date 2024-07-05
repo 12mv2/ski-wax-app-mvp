@@ -8,7 +8,7 @@ function HomePage () {
         <div>
             <h1>Welcome to Ski Wax App</h1>
             <video width="600" autoPlay loop muted>
-                <source src = "/SalomonShortOriginal.mp4" type = "video/mp4" /> 
+                <source src = "/SalomonOriginalMusic.mp4" type = "video/mp4" /> 
             </video>
         </div>
     )
