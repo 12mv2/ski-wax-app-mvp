@@ -13,7 +13,7 @@ module.exports = (env, argv) => {
 
     // Output: How and where to place bundled files
     output: {
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'client/build'),
       filename: isProduction ? '[name].[contenthash].js' : '[name].js',
       publicPath: '/'
     },
@@ -69,7 +69,8 @@ module.exports = (env, argv) => {
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-        template: './client/public/index.html'
+        template: './client/public/index.html',
+        filename: 'index.html'
       }),
       new MiniCssExtractPlugin({
         filename: isProduction ? '[name].[contenthash].css' : '[name].css',

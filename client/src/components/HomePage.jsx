@@ -3,13 +3,13 @@
 import React from 'react';
 
 function HomePage () {
+    console.log('HomePage component rendering');
     return (
         <div>
             <h1>Welcome to Ski Wax App</h1>
             <video width="600" autoPlay loop muted>
-                <source src = "/SalomonSupershortA.mp4" type = "video/mp4" /> 
+                <source src = "/SalomonShortOriginal.mp4" type = "video/mp4" /> 
             </video>
-            {/* input form component */}
         </div>
     )
 }

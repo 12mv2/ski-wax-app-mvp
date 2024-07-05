@@ -1,10 +1,11 @@
+// routes/api/wax.js
 // this file will contain all the routes for the API, which will be used to interact with the server, and the client/src/index.js file, which will contain the routes for the client-side application.
 // exports a router with my api routes
 const express = require('express'); 
 // const fetch = require('node-fetch');
 const router = express.Router();
 
-const getCoordinates = require('../utils/location');
+const getCoordinates = require('../../utils/location');
 
 router.get('/hello', (req, res) => {
   res.json({ message: 'Hello from the server!, server/routes/api' });
