@@ -64,4 +64,55 @@ TTD
         render chosen wax info
 
 --
+repo bloated from past mp4 files I had in the public
+cleaning by using BFG
+git clone --mirror https://github.com/12mv2/ski-wax-app-mvp.git
+cd ski-wax-app-mvp.git
+
+Detailed Steps
+Install Java
+Download and Install Java:
+
+Go to the Java download page and download the installer for your operating system.
+Run the installer and follow the instructions to install Java.
+Verify Java Installation:
+
+Open a terminal and verify the installation:
+sh
+Copy code
+java -version
+Install and Use BFG Repo-Cleaner
+Download BFG Repo-Cleaner:
+
+Download the BFG JAR file:
+sh
+Copy code
+wget https://repo1.maven.org/maven2/com/madgag/bfg/1.13.0/bfg-1.13.0.jar -O bfg.jar
+Clone your repository with --mirror:
+
+Clone the repository as a mirror:
+sh
+Copy code
+git clone --mirror https://github.com/12mv2/ski-wax-app-mvp.git
+cd ski-wax-app-mvp.git
+Run BFG Repo-Cleaner:
+
+Use Java to run the BFG tool:
+sh
+Copy code
+java -jar /path/to/bfg.jar --delete-files '*.mp4'
+Clean the repository:
+
+Run Git commands to clean up the repository:
+sh
+Copy code
+git reflog expire --expire=now --all
+git gc --prune=now --aggressive
+Push the changes to GitHub:
+
+Force push the cleaned repository:
+sh
+Copy code
+git push --force
+By following these steps, you should be able to remove the large .mp4 files from your repository's history and push the cleaned repository to GitHub. If you encounter any issues, please let me know!
 
