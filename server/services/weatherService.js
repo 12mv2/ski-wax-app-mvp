@@ -1,10 +1,12 @@
 // services/weatherService.js
 // making post request to weather api using coordinates from location helper and date + time from inputForm
 const axios = require('axios');
+const roundedHour = require('../utils/timeUtility');
 const API_KEY = 'd8ab23e9a5dcb795ca44d4cf563807cd';
 // require the variable that location helper got back
 // const coordinates = 
-async function getWeatherData(lon, lat, hour) {
+async function getWeatherData(lon, lat, time) {
+    const hour = roundedHour(time); console.log('hour: ', hour)
     try {
         const response = await axios.get(`https://api.openweathermap.org/data/3.0/onecall`, {
             params: { // paramaterization aka passing paramaters
@@ -15,10 +17,11 @@ async function getWeatherData(lon, lat, hour) {
                     units: 'imperial'
                     }
         })  
-    
+        console.log('complete weather data, response.data', response.data)
         const temperature = response.data.hourly[hour].temp;
+        console.log('temperature line 19 getWeatherData service', temperature);// debugging
         return temperature;
-
+        
     } catch (error) {
         console.log('error fetching weather data: ', error.message);
         throw error;
