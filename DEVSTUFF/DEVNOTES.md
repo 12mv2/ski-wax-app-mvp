@@ -148,4 +148,17 @@ npm run dev
 ---
 data working thru the geoLocation service but breaking at the weather service
 Next steps are to debug why lon is not gettting to the weather service
+--
+data flowing and handled up to and including wax recommendation
+hard coding in logic in place of db as of now
+
+TTD: 
+ make .env file and add api keys
+- make postgreSQL supabase db
+- make wax table, wax family table, join table 
+- READ CRUD on db and pass back to controller
+- pass db wax/waxes from controller to front end
+- render waxes on front end
+
+--
 
