@@ -1,6 +1,6 @@
 // TESTING
 const axios = require('axios');
-const API_KEY = 'AIzaSyD-RE8TGsbn7YSLce5FmHpr5gLFquGUL1E'; // Replace with your actual API key
+const API_KEY = process.env.GOOGLE_MAPS_API_KEY; // Replace with your actual API key
 
 // Function to make geolocation request using location data from form getting coordinates in response
 async function getCoordinates(location) {

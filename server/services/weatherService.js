@@ -2,7 +2,7 @@
 // making post request to weather api using coordinates from location helper and date + time from inputForm
 const axios = require('axios');
 const roundedHour = require('../utils/timeUtility');
-const API_KEY = 'd8ab23e9a5dcb795ca44d4cf563807cd';
+const API_KEY = process.env.OPEN_WEATHER_API_KEY;
 // require the variable that location helper got back
 // const coordinates = 
 async function getWeatherData(lon, lat, time) {

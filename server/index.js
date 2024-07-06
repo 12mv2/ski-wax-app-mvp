@@ -1,11 +1,12 @@
 // main server file / express application entry point
 // setup express app and connect everytyhing together
+require('dotenv').config(); // dotenv looks for .env, config parses from .env into an object process.env
 
 const express = require('express')
 const cors = require('cors'); // allows for cross origin requests
 const path = require('path');
 require('dotenv').config(); // so we cna use .env file
-
+      
 const app = express()
 const PORT = process.env.PORT || 5001;
 
