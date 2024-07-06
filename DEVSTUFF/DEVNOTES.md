@@ -153,7 +153,7 @@ data flowing and handled up to and including wax recommendation
 hard coding in logic in place of db as of now
 
 TTD: 
- make .env file and add api keys
+- make .env file and add api keys
 - make postgreSQL supabase db
 - make wax table, wax family table, join table 
 - READ CRUD on db and pass back to controller
