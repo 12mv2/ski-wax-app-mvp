@@ -1,8 +1,8 @@
 // db/index.js
 
 const { Pool } = require('pg'); // sets up a connection pool using the pg library. The pool manages multiple connections to the db and is used to execute queries
-
-const connectionString = 'postgresql://postgres.prmzpfamlzrqbipghubk:[SUPABASE_API_KEY]@aws-0-us-west-1.pooler.supabase.com:6543/postgres'
+// will use the pg library to make queries to the db and supabaseClient client to make new users and log in existing ones
+const connectionString = 'postgresql://postgres.prmzpfamlzrqbipghubk:NfPSyPD94peE21Vq@aws-0-us-west-1.pooler.supabase.com:6543/postgres'
 
 const pool = new Pool({ // new pool instance to connect to the db using the connection string
     connectionString,

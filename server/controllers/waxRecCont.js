@@ -4,6 +4,7 @@
 const getCoordinates = require ('../services/geoCodingService');
 const getWeatherData = require ('../services/weatherService');
 const getWaxes = require ('../services/getWaxesFromDb');
+const getWaxesByTemperature = require('../services/getWaxesFromDb');
 
 async function getWaxRecommendation(req, res) {
     const { location, date, time } = req.body;
@@ -18,10 +19,10 @@ async function getWaxRecommendation(req, res) {
         const temperature = await getWeatherData(lng, lat, time);
         console.log(`Temperature received- temp: ${temperature}`);
 
-        console.log(`Fetching wax/es from db for- temp: ${temperature}`);
-        const wax = await getWaxes(temperature);
-        console.log(`Wax/es received: ${wax}`);
-        
+        console.log(`Fetching wax/es from db for- Math.round(temperateure): ${Math.round(temperature)}`);
+        const wax = await getWaxesByTemperature(Math.round(temperature));
+        console.log(`Wax/es received: ${JSON.stringify(wax, null, 4)}`);
+
         res.json( { location, date, time, recommendation: wax})
     }   catch (error) {
         console.log('error fetching data from the waxRecCont controller', error);

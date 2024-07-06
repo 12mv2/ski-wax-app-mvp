@@ -1,5 +1,5 @@
 // getWaxesFromDb.js
-
+const db = require('../db/index.js'); // import the db connection pool 
 
 async function getWaxesByTemperature(temperature) {
     // db query goes here
@@ -12,7 +12,7 @@ async function getWaxesByTemperature(temperature) {
         return response.rows;
     } catch (err) {
         console.error('err.stack, Error executing qurey: ', err.stack);
-        throw err('error executing query in getWaxesFromDb.js, err.stack'); // keeps the error stack trace and origingal error type
+        throw err; // keeps the error stack trace and origingal error type
     }
 }
 
