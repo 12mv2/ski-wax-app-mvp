@@ -1,6 +1,6 @@
 // db/index.js
 
-const { Pool } = require('pg'); // pool? dont really know how it works or what it really is
+const { Pool } = require('pg'); // sets up a connection pool using the pg library. The pool manages multiple connections to the db and is used to execute queries
 
 const connectionString = 'postgresql://postgres.prmzpfamlzrqbipghubk:[SUPABASE_API_KEY]@aws-0-us-west-1.pooler.supabase.com:6543/postgres'
 
@@ -19,5 +19,5 @@ pool.on('error', (err) => {
 });
 
 module.exports = {
-    query: (tect, params) => pool.query(text, params), // export query method so that it can be used in other files to access the db 
+    query: (text, params) => pool.query(text, params), // export query method so that it can be used in other files to access the db 
 }
