@@ -1,13 +1,13 @@
-// to display the wax recommendation
+//  WaxRecommendation.jsx  // to display the wax recommendation
 
 import React from 'react';
-import InputForm from './InputForm'; // 
+import DisplayResults from './DisplayResults';
 
 function WaxRecommendation() {
     return (
         <div>
             <h1>Your Personal Wax Recommendation</h1>
-            <InputForm /> // input form for location and temperature
+            <DisplayResults /> // display the wax recommendation
         </div>
     )
 }

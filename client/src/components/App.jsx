@@ -7,6 +7,7 @@ import WaxRecommendation from './WaxRecommendation'; // import WaxRecommendation
 import InputForm from './InputForm'; // import InputForm component from components folder to render on input route
 import AppNavbar from './NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import DisplayResults from './DisplayResults';
 
 
 // App component that renders the home page and wax recommendation page based on the url
@@ -15,15 +16,15 @@ function App() {
   console.log('App component rendering');
   return (
     <div>
-      <h1>App is loaded</h1>
     <Router>
+    <h1>App is loaded</h1>
       <AppNavbar />
       <Routes>
         <Route path="/" element={<HomePage />} /> // render the home page component on the home route
         <Route path="/recommendation" element= {<WaxRecommendation />} /> // render the wax recommendation component on the wax recommendation route 
         <Route path="/input" element= {<InputForm />} /> // render the input form component on the input route
+        <Route path="/results" element= {<DisplayResults />} /> // render the display results component on the results route
       </Routes>
-      <AppNavbar />
     </Router>
     </div>
   );

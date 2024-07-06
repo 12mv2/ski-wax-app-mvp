@@ -1,3 +1,5 @@
+// HomePage component
+
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
@@ -8,6 +10,8 @@ const HomePage = () => {
         <Col>
           <h1>Welcome to the Ski Wax App</h1>
           <p>This app helps you choose the best ski wax based on the weather conditions.</p>
+          <video width={600} autoPlay loop muted 
+            source src="/SalomonOriginalMusic.mp4" type="video/mp4" />
           <Button href="/input" variant="primary">Get Started</Button>
         </Col>
       </Row>

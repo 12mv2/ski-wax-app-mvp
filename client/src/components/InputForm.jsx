@@ -1,30 +1,40 @@
+// InputForm component to render a form with input fields for the user to enter the location, date, and time of their ski trip. The form has a submit button that sends the data to the back-end server to get the wax recommendation. The component uses the useState hook to manage the state of the location, date, time, and wax recommendation. The component uses the useNavigate hook to navigate to the wax recommendation page with the wax recommendation as a query parameter.
+
 import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom'; // to access search property 
 import { Container, Form, Button } from 'react-bootstrap';
 
 const InputForm = () => {
-  const [location, setLocation] = useState('');
+  const [location, setLocation] = useState(''); // useState hook to hook into the state of the location
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
+  const [recommendation, setRecommendation] = useState('no recommendation yet'); // to store the wax recommendation
+  const [error, setError] = useState(null); // to store error messages
+  const navigate = useNavigate(); // hook being used ot navigate to the wax recommendation page
   
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => { // async function to handle form submission
+    e.preventDefault(); // prevent the default form submission
     console.log(location, date, time);
 
     try {
-      const response = await fetch('/api/wax', {
+      const response = await fetch('/api/wax', { // fetch to the back end server to get the wax recommendation
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
+        headers: { // set the headers to send JSON data
+          'Content-Type': 'application/json'  // set content type header to application/json to send JSON data
             },
-            body: JSON.stringify({ location, date, time })
+            body: JSON.stringify({ location, date, time }) // convert the location and date to a JSON string and send it as the request body
       })
       if (!response.ok) {
         throw new Error(`error status: ${response.status}`); 
       }
       const data = await response.json();
-      console.log(`success, data: ${data}`);
+      console.log(`success! this data is in response to inputForm data sent: ${data}`);
+      setRecommendation(data.recommendation);
+      navigate('/results', { state: { waxes : data.recommendation }}); // NAVIGATE TO THE RESULTS PAGE WITH THE WAX RECOMMENDATIONS
+      setError(null);
       } catch(error) {
       console.error(`error: ${error}`)
+      setError('Failed to retrieve wax recommendation data'); // set / store the error message in state
       }
     };
 

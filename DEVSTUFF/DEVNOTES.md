@@ -161,4 +161,4 @@ TTD:
 - render waxes on front end
 
 --
-
+working on front end- how to pass data (wax results) from the Input form (where it goes back to), to the DisplayResults component via navigation (react-dom)

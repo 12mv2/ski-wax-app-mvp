@@ -24,6 +24,7 @@ async function getWaxRecommendation(req, res) {
         console.log(`Wax/es received: ${JSON.stringify(wax, null, 4)}`);
 
         res.json( { location, date, time, recommendation: wax})
+        
     }   catch (error) {
         console.log('error fetching data from the waxRecCont controller', error);
         res.status(500).json( { error: 'error fetching data from teh waxRecCont controller' } )
