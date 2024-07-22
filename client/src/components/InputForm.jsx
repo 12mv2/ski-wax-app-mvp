@@ -22,7 +22,7 @@ const InputForm = () => {
         headers: { // set the headers to send JSON data
           'Content-Type': 'application/json'  // set content type header to application/json to send JSON data
             },
-            body: JSON.stringify({ location, date, time }) // convert the location and date to a JSON string and send it as the request body
+          body: JSON.stringify({ location, date, time }) // convert the location and date to a JSON string and send it as the request body
       })
       if (!response.ok) {
         throw new Error(`error status: ${response.status}`); 
