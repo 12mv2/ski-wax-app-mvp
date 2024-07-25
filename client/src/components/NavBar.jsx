@@ -15,7 +15,7 @@ function AppNavbar() {
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             <Nav.Link as={Link} to="/input">Input Form</Nav.Link>
             <Nav.Link as={Link} to="/recommendation">Wax Recommendation</Nav.Link>
-            <Nav.Link as={Link} to="/results">Recommended Waxes</Nav.Link>
+            <Nav.Link as={Link} to="/results">Clothing</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

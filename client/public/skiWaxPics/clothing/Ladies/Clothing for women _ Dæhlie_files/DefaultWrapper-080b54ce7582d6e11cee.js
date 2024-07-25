@@ -1,0 +1,2 @@
+"use strict";(self.__LOADABLE_LOADED_CHUNKS__=self.__LOADABLE_LOADED_CHUNKS__||[]).push([[5257],{23161:function(r,a,e){e.r(a);var s=e(75892),t=e(52322);a.default=function(r){var a=r.$style,e=r.children,_=(0,s.hQ)()[0];return(0,t.jsx)("div",{className:_(Object.assign({aspectRatio:"var(--ratio-vertical-primary)"},a)),children:e})}}}]);
+//# sourceMappingURL=DefaultWrapper-080b54ce7582d6e11cee.js.map

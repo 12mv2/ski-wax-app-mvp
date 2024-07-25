@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom'; // to access search
 import { Container, Form, Button } from 'react-bootstrap';
 
 const InputForm = () => {
-  const [location, setLocation] = useState(''); // useState hook to hook into the state of the location
+  const [location, setLocation] = useState('Resolute Bay Airport, Canada'); // useState hook to hook into the state of the location
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [recommendation, setRecommendation] = useState('no recommendation yet'); // to store the wax recommendation
@@ -22,7 +22,7 @@ const InputForm = () => {
         headers: { // set the headers to send JSON data
           'Content-Type': 'application/json'  // set content type header to application/json to send JSON data
             },
-            body: JSON.stringify({ location, date, time }) // convert the location and date to a JSON string and send it as the request body
+          body: JSON.stringify({ location: location || 'Resolute Bay Airport, Canada', date, time }) // hard coding in a cold location //  convert the location and date to a JSON string and send it as the request body
       })
       if (!response.ok) {
         throw new Error(`error status: ${response.status}`); 
@@ -30,7 +30,7 @@ const InputForm = () => {
       const data = await response.json();
       console.log(`success! this data is in response to inputForm data sent: ${data}`);
       setRecommendation(data.recommendation);
-      navigate('/results', { state: { waxes : data.recommendation }}); // NAVIGATE TO THE RESULTS PAGE WITH THE WAX RECOMMENDATIONS
+      navigate('/recommendation', { state: { waxes : data.recommendation }}); // NAVIGATE TO THE RESULTS PAGE WITH THE WAX RECOMMENDATIONS
       setError(null);
       } catch(error) {
       console.error(`error: ${error}`)
